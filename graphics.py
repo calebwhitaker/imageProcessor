@@ -272,6 +272,34 @@ def horizontalStripes():
             else:
                 screen.set_at((x, y), (0, 255, 0))
 
+def mirrorXAxis():
+    for y in range(300):
+        for x in range(600):
+            color = screen.get_at((x, y))
+
+            r = color[0]
+            g = color[1]
+            b = color[2]
+            screen.set_at((x, y), (r, g, b))
+            screen.set_at((x, 600 - y), (r, g, b))
+
+
+def mirrorYAxis():
+    for x in range(300):
+        for y in range(600):
+            color = screen.get_at((x, y))
+
+            r = color[0]
+            g = color[1]
+            b = color[2]
+            screen.set_at((x, y), (r, g, b))
+            screen.set_at((600 - x, y), (r, g, b))
+
+
+def fadeFromTop():
+    pass
+
+
 
 def sepia():
     for x in range(600):
@@ -383,7 +411,12 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_o:
                 maxCyan()
-
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_7:
+                mirrorYAxis()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_8:
+                mirrorXAxis()
 
 
 
